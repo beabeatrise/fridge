@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FRIDGE</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+  <div id="mainView"> <br> 
+    <h1>FRIDGE</h1> <br>
+      <div class="button-container">
+        <button onclick="showView('addView')">ADD PRODUCT</button>
+        <button onclick="showView('editView')">DELETE PRODUCTS</button>
+      </div> <br>
+  
+    <div id="productsContainer" class="grid-container">
+      <section id="piens-un-piena-produkti" class="grid-item">
+        <h2>MILK/ PLANT MILK PRODUCTS</h2>
+        <div class="category-container"></div>
+      </section>
+      <section id="gala" class="grid-item">
+        <h2>MEAT/ PROTEIN</h2>
+        <div class="category-container"></div>
+      </section>
+      <section id="darzeni" class="grid-item">
+        <h2>FRUIT AND VEGETABLES</h2>
+        <div class="category-container"></div>
+      </section>
+      <section id="augli" class="grid-item">
+        <h2>READY TO EAT MEALS</h2>
+        <div class="category-container"></div>
+      </section>
+      
+      <section id="citi" class="grid-item">
+        <h2>OTHER</h2>
+        <div class="category-container"></div>
+      </section>
+    </div>
+    <a href="/" class="logout-button">LOGOUT</a>
+  </div>
+
+
+
+
+  <div id="addView" style="display: none;"> <br>
+    <button onclick="showView('mainView')">⬅ BACK</button>
+    <% if (error) { %>
+      <div class="error-message" ><%= error %></div>
+    <% } %>
+  
+    <form id="productForm" action="/api/fridge-products" method="post"><br>
+      
+        <div class="input-group">
+            <label for="productName">&#128292;</label>
+            <input type="text" id="productName" placeholder="Product name" required>
+        </div>
+    
+        
+        <div class="input-group">
+            <label for="expiryDate">&#128467;</label>
+            <input type="date" id="expiryDate" required>
+        </div>
+    
+        
+        <div class="input-group">
+            <label for="quantity">🔢</label>
+            <input type="number" id="quantity" placeholder="Quantity" min="1" required>
+        </div>
+    
+   
+        <div class="input-group">
+            <label for="category">📂</label>
+            <select id="category" required>
+                <option value="" disabled selected>Choose category</option>
+                <option value="piens-un-piena-produkti">MILK/ PLANT MILK PRODUCTS </option>
+                <option value="gala">MEAT/ PROTEIN</option>
+                <option value="darzeni">FRUIT AND VEGETABLES</option>
+                <option value="augli"> READY TO EAT MEALS</option>
+                <option value="citi">OTHER</option>
+            </select>
+        </div>
+    
+        
+        <div class="input-group">
+          <label for="icon">&#127822;</label>
+          <select id="icon">
+              <option value="🟦">PLACEHOLDER ICON</option>
+              <option value="🍎">apple</option>
+              <option value="🍐">pear</option>
+              <option value="🍊">orange</option>
+              <option value="🍋">lemoon</option>
+              <option value="🍌">banana</option>
+              <option value="🍉">watermelon</option>
+              <option value="🥑">avocado</option>
+              <option value="🥖">bread</option>
+              <option value="🧀">cheese</option>
+              <option value="🥚">eggs</option>
+              <option value="🧈">butter</option>
+              <option value="🥛">milk</option>
+              <option value="🥩">steak</option>
+              <option value="🥓">bacon</option>
+              <option value="🍕">pizza</option>
+              <option value="🍗">chicken</option>
+              <option value="🥗">salad</option>
+              <option value="🍰">cake</option>
+              <option value="🍣">sushi</option>
+              
+          </select>
+      </div>
+       
+        <div class="input-group">
+            <label for="notes">📝</label>
+            <textarea id="notes" placeholder="More info (e.g. for dinner)"></textarea>
+        </div>
+    
+        
+        <button type="submit">ADD PRODUCT</button>
+    </form>
+  </div>
+
+ 
+<div id="editView" style="display: none;">
+    <br>
+    <div class="button-container">
+      <button onclick="showView('mainView')">⬅ BACK</button>
+    </div>
+    <br>
+    
+    <div id="editProductsContainer" class="grid-container">
+      <section id="edit-piens-un-piena-produkti" class="grid-item">
+        <h2>MILK/ PLANT MILK PRODUCTS</h2>
+        <div class="category-container"></div>
+      </section>
+      <section id="edit-gala" class="grid-item">
+        <h2>MEAT/ PROTEIN</h2>
+        <div class="category-container"></div>
+      </section>
+      <section id="edit-darzeni" class="grid-item">
+        <h2>FRUIT AND VEGETABLES</h2>
+        <div class="category-container"></div>
+      </section>
+      <section id="edit-augli" class="grid-item">
+        <h2>READY TO EAT MEALS</h2>
+        <div class="category-container"></div>
+      </section>
+      <section id="edit-citi" class="grid-item">
+        <h2>OTHER</h2>
+        <div class="category-container"></div>
+      </section>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
