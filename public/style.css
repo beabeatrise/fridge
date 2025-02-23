@@ -241,17 +241,75 @@ form button:focus {
   min-height: 150px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .grid-container {
-    grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
+  gap: 5px;
+  padding: 5px;
   }
-}
+  
+  .grid-item {
+  padding: 10px;
+  font-size: 14px;
+  }
+  
+  .product-box {
+  width: 100%;
+  max-width: 100%;
+  padding: 10px;
+  }
+  }
+  
+  @media (max-width: 768px) {
+  .button-container {
+  flex-direction: column;
+  gap: 5px;
+  }
+  
+  button,
+  .logout-button {
+  font-size: 14px;
+  padding: 8px 15px;
+  }
+  }
+  
+  @media (max-width: 600px) {
+  form {
+  width: 90%;
+  padding: 15px;
+  }
+  
+  input,
+  select,
+  textarea {
+  font-size: 16px;
+  padding: 12px;
+  }
+  }
+  
+  @media (max-width: 600px) {
+  .category-container {
+  max-height: 200px;
+  }
+  }
+  
+  @media (max-width: 600px) {
+  .icon {
+  width: 30px;
+  height: 30px;
+  }
+  }
 
-@media (max-width: 480px) {
-  .grid-container {
-    grid-template-columns: 1fr;
+  .grid-item {
+    padding: 10px;
+    font-size: 14px;
   }
-}
+
+  .product-box {
+    width: 100%; 
+    max-width: 100%;
+    padding: 10px;
+  }
 
 
 button,

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="lv">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,14 +8,15 @@
 </head>
 <body>
 
-
+ <!--galvenais-->
   <div id="mainView"> <br> 
     <h1>FRIDGE</h1> <br>
+     <!--pogas-->
       <div class="button-container">
         <button onclick="showView('addView')">ADD PRODUCT</button>
         <button onclick="showView('editView')">DELETE PRODUCTS</button>
       </div> <br>
-  
+   <!--kategorijas-->
     <div id="productsContainer" class="grid-container">
       <section id="piens-un-piena-produkti" class="grid-item">
         <h2>MILK/ PLANT MILK PRODUCTS</h2>
@@ -39,18 +40,19 @@
         <div class="category-container"></div>
       </section>
     </div>
+     <!--logout-->
     <a href="/" class="logout-button">LOGOUT</a>
   </div>
 
 
 
-
+ <!--add-->
   <div id="addView" style="display: none;"> <br>
     <button onclick="showView('mainView')">⬅ BACK</button>
     <% if (error) { %>
       <div class="error-message" ><%= error %></div>
     <% } %>
-  
+   <!--forma-->
     <form id="productForm" action="/api/fridge-products" method="post"><br>
       
         <div class="input-group">
@@ -121,7 +123,7 @@
     </form>
   </div>
 
- 
+  <!--dzesana-->
 <div id="editView" style="display: none;">
     <br>
     <div class="button-container">

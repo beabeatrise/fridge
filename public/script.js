@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", fetchProducts);
-
+//get products
 function fetchProducts() {
   fetch("/api/fridge-products")
     .then((response) => response.json())
@@ -14,6 +14,7 @@ function renderProducts(products) {
   
   document.querySelectorAll(".category-container").forEach((container) => (container.innerHTML = ""));
 
+  //produktu kastes
   products.forEach((product) => {
     
     let productWrapper = document.createElement("div");
@@ -41,15 +42,16 @@ function renderProducts(products) {
     box.appendChild(content);
     productWrapper.appendChild(box);
 
+    //bridinajuma krasa 
     updateProductColor(productWrapper, product.expiry_date);
 
-    
+    //sadala kategorijas
     let categoryContainer = document.querySelector(`#${product.category} .category-container`);
     if (categoryContainer) {
       categoryContainer.appendChild(productWrapper);
     }
 
-    
+    //dzesana
     let editProductWrapper = document.createElement("div");
     editProductWrapper.classList.add("product-box");
 
@@ -74,7 +76,7 @@ function renderProducts(products) {
   });
 }
 
-
+//pievienosana
 document.getElementById("productForm").addEventListener("submit", function (event) {
   event.preventDefault();
 
@@ -84,7 +86,7 @@ document.getElementById("productForm").addEventListener("submit", function (even
   let category = document.getElementById("category").value;
   let icon = document.getElementById("icon").value;
   let notes = document.getElementById("notes").value;
-
+  //obligatie
   if (!productName || !expiryDate || !quantity || !category ) {
     alert("Please fill out; name, quantity, expiry date and category!");
     return;
@@ -92,6 +94,7 @@ document.getElementById("productForm").addEventListener("submit", function (even
 
   let product = { productName, expiryDate, quantity, category, icon, notes };
 
+  //nosuta
   fetch("/api/fridge-products", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -115,7 +118,7 @@ document.getElementById("productForm").addEventListener("submit", function (even
     });
 });
 
-
+//dzesana id
 function deleteProduct(productId) {
   fetch(`/api/fridge-products/${productId}`, { method: "DELETE" })
     .then((response) => {
@@ -127,13 +130,14 @@ function deleteProduct(productId) {
     })
     .catch((err) => console.error("ERROR delete:", err));
 }
-
+//skati
 function showView(view) {
   document.getElementById("mainView").style.display = "none";
   document.getElementById("addView").style.display = "none";
   document.getElementById("editView").style.display = "none";
   document.getElementById(view).style.display = "block";
 }
+//terminu krasas
 function updateProductColor(element, expiryDate) {
     let expiry = new Date(expiryDate);
     let today = new Date();
